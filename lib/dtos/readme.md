@@ -1,3 +1,4 @@
+Modifications copyright (C) Flole
 https://martinfowler.com/eaaCatalog/dataTransferObject.html
 
 I'm aware that Martin Fowler probably wouldn't like this naming since these aren't "real" DTOs.

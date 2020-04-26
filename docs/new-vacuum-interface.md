@@ -1,3 +1,4 @@
+Modifications copyright (C) Flole
 Creating this wiki to discuss the abstraction layer that we want between Robot implementations and other components such as MQTT and the WebInterface.
 
 Interfaces designed here should assume a service / RPC boundary so that we could potentially move them into a separate binary. Consequently data types should ideally use Protocol Buffers (with json encoding for now).

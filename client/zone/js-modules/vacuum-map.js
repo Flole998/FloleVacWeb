@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 import { MapDrawer } from "./map-drawer.js";
 import { PathDrawer } from "./path-drawer.js";
 import { trackTransforms } from "./tracked-canvas.js";

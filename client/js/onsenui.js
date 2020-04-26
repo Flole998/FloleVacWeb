@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /* onsenui v2.10.1 - 2018-05-28 */
 
 (function (global, factory) {

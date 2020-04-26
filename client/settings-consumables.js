@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons, fn*/
 var loadingBarSettingsConsumables = document.getElementById("loading-bar-settings-consumables");
 var consumableMainBrushStatus = document.getElementById("settings-consumables-status-main-brush");

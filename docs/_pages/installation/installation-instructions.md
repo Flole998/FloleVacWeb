@@ -1,10 +1,11 @@
+Modifications copyright (C) Flole
 ---
 title: Legacy
 category: Installation
 order: 11
 ---
-# Valetudo legacy installation guide
-This guide will take you through the required steps to install the latest version of valetudo onto your rooted Roborock Vacuum. Please note that these instructions may or may not apply to any other version than the latest version of Valetudo.
+# FloleVacWeb legacy installation guide
+This guide will take you through the required steps to install the latest version of floleVacWeb onto your rooted Roborock Vacuum. Please note that these instructions may or may not apply to any other version than the latest version of FloleVacWeb.
 
 **If you're reusing the folder structure of an old install, don't forget to `git pull` your dustcloud repo to get the latest firmwarebuilder**
 
@@ -30,8 +31,8 @@ It's always possible to unprovision the robot by shortly pressing the reset butt
 #### The Cloud Interface
 As soon as the robot is connected to a Wi-Fi Access Point, it tries to connect its cloud servers. Communication is encrypted via a *Pre-shared Key which is programmed at the factory*. There's also a unique Device ID called *did* to uniquely identify the robot.
 
-### How Valetudo works
-Valetudo (currently) uses both previously described interfaces to control the robot. To be able to use the cloud interface, traffic is redirected to Valetudo which pretends to be the official cloud all while running on the robot itself. Since *Roborock* implemented some countermeasures against this, it is required to utilize the robots firewall to pretend that Valetudo is the official cloud. This may or may not change in the future if someone finds a better way.
+### How FloleVacWeb works
+FloleVacWeb (currently) uses both previously described interfaces to control the robot. To be able to use the cloud interface, traffic is redirected to FloleVacWeb which pretends to be the official cloud all while running on the robot itself. Since *Roborock* implemented some countermeasures against this, it is required to utilize the robots firewall to pretend that FloleVacWeb is the official cloud. This may or may not change in the future if someone finds a better way.
 
 ### How the installation works
 *Roborock* uses encrypted but unsigned fimware images. The encryption key however was found by Security/IoT Researcher Dennis Giese, which enables us to build custom firmware images for this device and just flash them via the official firmware upgrade interface.
@@ -54,7 +55,7 @@ There are a few dependencies required for building the image. Please refer to yo
 * dos2unix
 
 ### Root Access
-If you plan on being able to connect to the robot via SSH, you will need a public/private ssh keypair. **This is not required to run valetudo.**
+If you plan on being able to connect to the robot via SSH, you will need a public/private ssh keypair. **This is not required to run floleVacWeb.**
 It's useful to fetch logs and assist the development if you encounter any bugs, though.
 
 If you do not have a keypair yet, you can generate one with the following command
@@ -65,7 +66,7 @@ Per default, the generated keys will be created in `~/.ssh`.
 If you choose to create the keys in another location, remember your chosen location for later.
 
 ## Image Building
-If you just need a basic Valetudo enabled Firmware image, you can skip the Image Building steps here by using Dennis's Dustbuilder: https://builder.dontvacuum.me/
+If you just need a basic FloleVacWeb enabled Firmware image, you can skip the Image Building steps here by using Dennis's Dustbuilder: https://builder.dontvacuum.me/
 
 ### Preparations for building the image
 
@@ -78,21 +79,21 @@ If you just need a basic Valetudo enabled Firmware image, you can skip the Image
        
        git clone https://github.com/dgiese/dustcloud.git
        
-3. Create a valetudo directory
+3. Create a floleVacWeb directory
 
-       mkdir valetudo
-       pushd valetudo
+       mkdir floleVacWeb
+       pushd floleVacWeb
       
-4. Download the latest valetudo binary from https://github.com/Hypfer/Valetudo/releases/latest
+4. Download the latest floleVacWeb binary from https://github.com/Hypfer/FloleVacWeb/releases/latest
 
-       wget https://github.com/Hypfer/Valetudo/releases/latest/download/valetudo
+       wget https://github.com/Hypfer/FloleVacWeb/releases/latest/download/floleVacWeb
        mkdir deployment
        pushd deployment
-       wget https://github.com/Hypfer/Valetudo/raw/master/deployment/valetudo.conf
+       wget https://github.com/Hypfer/FloleVacWeb/raw/master/deployment/floleVacWeb.conf
        mkdir etc
        pushd etc
-       wget https://github.com/Hypfer/Valetudo/raw/master/deployment/etc/hosts
-       wget https://github.com/Hypfer/Valetudo/raw/master/deployment/etc/rc.local
+       wget https://github.com/Hypfer/FloleVacWeb/raw/master/deployment/etc/hosts
+       wget https://github.com/Hypfer/FloleVacWeb/raw/master/deployment/etc/rc.local
        popd
        popd
        popd
@@ -146,13 +147,13 @@ rockrobo/
 │   └── README.md
 ├── firmware
 │   └── v11_001712.pkg
-└── valetudo
+└── floleVacWeb
     ├── deployment
-    │   ├── valetudo.conf
+    │   ├── floleVacWeb.conf
     │   └── etc
     │       ├── hosts
     │       └── rc.local
-    └── valetudo
+    └── floleVacWeb
 
 ```
 Next, we can create the firmware image.
@@ -166,7 +167,7 @@ cd firmware
 sudo ../dustcloud/devices/xiaomi.vacuum/firmwarebuilder/imagebuilder.sh \
      --firmware=v11_001748.fullos.pkg \
      --public-key=$HOME/.ssh/id_ed25519.pub \
-     --valetudo-path=../valetudo \
+     --floleVacWeb-path=../floleVacWeb \
      --disable-firmware-updates \
      --ntpserver=192.168.178.1 \
      --replace-adbd
@@ -211,10 +212,10 @@ If your robot doesn't show up check if you have multiple connected network inter
 mirobo --ip 192.168.8.1 --token XXXXXXXXXXXXXXXX update-firmware --ip YOUR_IP_ADDRESS firmware/output/v11_001748.fullos.pkg
 ```
 
-Please note that you need to replace `v11_001748.fullos.pkg` with the filename of the firmware image you have built. If you're upgrading Valetudo to a new version, you need to replace `192.168.8.1` with the robot's current IP address. Also please keep the distance between your Wi-Fi antenna and your robot as short as possible or the connection might get lost.
+Please note that you need to replace `v11_001748.fullos.pkg` with the filename of the firmware image you have built. If you're upgrading FloleVacWeb to a new version, you need to replace `192.168.8.1` with the robot's current IP address. Also please keep the distance between your Wi-Fi antenna and your robot as short as possible or the connection might get lost.
 
 After the successful transfer of the image to the robot, the robot will start flashing the image. This will take about 5~10 minutes. After the process is done, the robot will state that the update was successful.
-You should then reboot the Robot either via ssh command `ssh root@192.168.8.1` and typing `reboot` or simply by taking it out of dock an push the ON switch to prevent valetudo stuck on LOADING STATE???
+You should then reboot the Robot either via ssh command `ssh root@192.168.8.1` and typing `reboot` or simply by taking it out of dock an push the ON switch to prevent floleVacWeb stuck on LOADING STATE???
 
 ### Firmware Installation fails
 #### ... before the download bar appears:
@@ -233,11 +234,11 @@ You should then reboot the Robot either via ssh command `ssh root@192.168.8.1` a
 
 ## Connect your robot to your Wifi
 
-To connect the robot to your home Wifi, just connect to http://192.168.8.1 and use Valetudos settings dialog to enter your wifi credentials. Please note that only *WPA2-PSK* is supported.
+To connect the robot to your home Wifi, just connect to http://192.168.8.1 and use FloleVacWebs settings dialog to enter your wifi credentials. Please note that only *WPA2-PSK* is supported.
 After updating the Wifi settings, you should reboot your robot. 
 
-## Open Valetudo
+## Open FloleVacWeb
 You need to get the IP of your robot (e.g. from your router) and connect to it using your browser e.g. http://192.168.Y.Z
 
-## Upgrading Valetudo
-If you're upgrading Valetudo to a new version, you don't need to unprovision your robot since you don't need to discover your token via handshake. Just open up Valetudo and use the settings page. Other than that it's basically the same process as the initial installation.
+## Upgrading FloleVacWeb
+If you're upgrading FloleVacWeb to a new version, you don't need to unprovision your robot since you don't need to discover your token via handshake. Just open up FloleVacWeb and use the settings page. Other than that it's basically the same process as the initial installation.

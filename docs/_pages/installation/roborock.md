@@ -1,3 +1,4 @@
+Modifications copyright (C) Flole
 ---
 title: Roborock
 category: Installation
@@ -9,20 +10,20 @@ This guide applies to the following robot models
 * Gen 1 Xiaomi Mi SDJQR02RR aka Mi Robot Vacuum *rockrobo.vacuum.v1*
 * Gen 2 Roborock S50/S51/S55 (depending on color) *roborock.vacuum.s5*
 
-Everything else is unrootable (yet) and therefore not supported by Valetudo.<br/>
+Everything else is unrootable (yet) and therefore not supported by FloleVacWeb.<br/>
 This includes the S6 as well as the S5 Max.
 
 ## Preamble
-Valetudo is not a custom firmware.
+FloleVacWeb is not a custom firmware.
 It is simply an alternative App implementation + mock cloud which runs on the robot itself.<br/>
 
 To do that, some secret data is required. Those being the `did`, the `cloudKey` and the current `local token`.
-Running on the robot itself enables Valetudo to access those as well as work while in AP mode.
+Running on the robot itself enables FloleVacWeb to access those as well as work while in AP mode.
 
 It's also very neat to have a completely self-contained appliance with a webinterface.
 
-Therefore, installing Valetudo simply means taking the stock firmware and injecting Valetudo into it.<br/>
-Sadly though, this process has to be done by each user indivually because hosting firmware images with Valetudo preinstalled would probably be copyright infringement.
+Therefore, installing FloleVacWeb simply means taking the stock firmware and injecting FloleVacWeb into it.<br/>
+Sadly though, this process has to be done by each user indivually because hosting firmware images with FloleVacWeb preinstalled would probably be copyright infringement.
 
 ## Building the Firmware Image
 For this step, a Linux based operating system is required, since we need to mount the *ext4 file System image* of the stock firmware.
@@ -39,7 +40,7 @@ There are a few dependencies required for building the image. Please refer to yo
 * dos2unix
 
 ### Root Access
-If you plan on being able to connect to the robot via SSH, you will need a public/private ssh keypair. **This is not required to run valetudo.**
+If you plan on being able to connect to the robot via SSH, you will need a public/private ssh keypair. **This is not required to run floleVacWeb.**
 It's useful to fetch logs and assist the development if you encounter any bugs, though.
 
 If you do not have a keypair yet, you can generate one with the following command
@@ -76,8 +77,8 @@ Example: https://dustbuilder.xvm.mit.edu/pkg/s5/v11_002008.fullos.fd043420-6ddb-
 ### Image Building
 It is recommended to use [https://github.com/zvldz/vacuum](https://github.com/zvldz/vacuum) to build the image.
 
-`--valetudo-path` expects a path to a folder containing a binary named `valetudo`.
-Refer to [https://github.com/Hypfer/Valetudo/releases](https://github.com/Hypfer/Valetudo/releases) to fetch the latest valetudo binary.
+`--floleVacWeb-path` expects a path to a folder containing a binary named `floleVacWeb`.
+Refer to [https://github.com/Hypfer/FloleVacWeb/releases](https://github.com/Hypfer/FloleVacWeb/releases) to fetch the latest floleVacWeb binary.
 
 Please refer to this command-line example and edit it according to your setup:
 ```
@@ -88,7 +89,7 @@ Please refer to this command-line example and edit it according to your setup:
                         --enable-greeting \
                         --disable-logs \
                         --replace-adbd \
-                        --valetudo-path=./Valetudo \
+                        --floleVacWeb-path=./FloleVacWeb \
                         --replace-miio \
                         --enable-dns-catcher \
                         -f path_to_firmware.pkg
@@ -129,10 +130,10 @@ If your robot doesn't show up check if you have multiple connected network inter
 mirobo --ip 192.168.8.1 --token XXXXXXXXXXXXXXXX update-firmware --ip YOUR_IP_ADDRESS path/to/built/image.pkg
 ```
 
-If you're upgrading Valetudo to a new version, you need to replace `192.168.8.1` with the robot's current IP address. Also please keep the distance between your Wi-Fi antenna and your robot as short as possible or the connection might get lost.
+If you're upgrading FloleVacWeb to a new version, you need to replace `192.168.8.1` with the robot's current IP address. Also please keep the distance between your Wi-Fi antenna and your robot as short as possible or the connection might get lost.
 
 After the successful transfer of the image to the robot, the robot will start flashing the image. This will take about 5~10 minutes. After the process is done, the robot will state that the update was successful.
-You should then reboot the Robot either via ssh command `ssh root@192.168.8.1` and typing `reboot` or simply by taking it out of dock an push the ON switch to prevent valetudo stuck on LOADING STATE???
+You should then reboot the Robot either via ssh command `ssh root@192.168.8.1` and typing `reboot` or simply by taking it out of dock an push the ON switch to prevent floleVacWeb stuck on LOADING STATE???
 
 ### Firmware Installation fails
 #### ... before the download bar appears:
@@ -151,8 +152,8 @@ You should then reboot the Robot either via ssh command `ssh root@192.168.8.1` a
 
 ## Connect your robot to your Wifi
 
-To connect the robot to your home Wifi, just connect to http://192.168.8.1 and use Valetudos settings dialog to enter your wifi credentials. Please note that only *WPA2-PSK* is supported.
+To connect the robot to your home Wifi, just connect to http://192.168.8.1 and use FloleVacWebs settings dialog to enter your wifi credentials. Please note that only *WPA2-PSK* is supported.
 After updating the Wifi settings, you should reboot your robot. 
 
-## Open Valetudo
+## Open FloleVacWeb
 You need to get the IP of your robot (e.g. from your router) and connect to it using your browser e.g. http://192.168.Y.Z

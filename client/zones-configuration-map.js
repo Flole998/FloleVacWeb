@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons, fn*/
 import {VacuumMap} from "./zone/js-modules/vacuum-map.js";
 

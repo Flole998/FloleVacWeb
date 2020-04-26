@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 const fs =  require("fs").promises;
 const should = require("should");
 

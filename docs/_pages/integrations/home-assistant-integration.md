@@ -1,3 +1,4 @@
+Modifications copyright (C) Flole
 ---
 title: Home Assistant
 category: Integrations
@@ -8,7 +9,7 @@ order: 20
 To make your Robot talking to your MQTT broker (like Home Assistant), please adapt the config.json file on the robot to your needs (MQTT broker address, username and password of the broker).
 
 ```
-nano /mnt/data/valetudo/config.json
+nano /mnt/data/floleVacWeb/config.json
 ```
 
 
@@ -21,7 +22,7 @@ nano /mnt/data/valetudo/config.json
   "mqtt": {
     "enabled": true,
     "identifier": "rockrobo",
-    "topicPrefix": "valetudo",
+    "topicPrefix": "floleVacWeb",
     "autoconfPrefix": "homeassistant",
     "broker_url": "mqtt://username:password@192.168.1.22",
     "mapSettings": {
@@ -53,12 +54,12 @@ mqtt:
 Here are some commands you can publish to control the vacuum:
 
 ```
-mosquitto_pub -h yourserver -t "valetudo/rockrobo/command" -m "locate"
-mosquitto_pub -h yourserver -t "valetudo/rockrobo/command" -m "start"
-mosquitto_pub -h yourserver -t "valetudo/rockrobo/command" -m "stop"
-mosquitto_pub -h yourserver -t "valetudo/rockrobo/command" -m "pause"
-mosquitto_pub -h yourserver -t "valetudo/rockrobo/command" -m "locate"
-mosquitto_pub -h yourserver -t "valetudo/rockrobo/command" -m "return_to_base"
+mosquitto_pub -h yourserver -t "floleVacWeb/rockrobo/command" -m "locate"
+mosquitto_pub -h yourserver -t "floleVacWeb/rockrobo/command" -m "start"
+mosquitto_pub -h yourserver -t "floleVacWeb/rockrobo/command" -m "stop"
+mosquitto_pub -h yourserver -t "floleVacWeb/rockrobo/command" -m "pause"
+mosquitto_pub -h yourserver -t "floleVacWeb/rockrobo/command" -m "locate"
+mosquitto_pub -h yourserver -t "floleVacWeb/rockrobo/command" -m "return_to_base"
 ```
 
 
@@ -98,4 +99,4 @@ move_vacuum_to_bin_emptying_location:
 
 ### PNG map generation
 
-If you on Hass.io and want the map also on your dashboards of Home Assistant, use the [ICantBelieveItsNotValetudo-Addon](https://github.com/Poeschl/Hassio-Addons/tree/master/ICantBelieveItsNotValetudo).
+If you on Hass.io and want the map also on your dashboards of Home Assistant, use the [ICantBelieveItsNotFloleVacWeb-Addon](https://github.com/Poeschl/Hassio-Addons/tree/master/ICantBelieveItsNotFloleVacWeb).

@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 const CHARACTERS = {
     "N": [
         [0,0],

@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /**
  * The idea behind "locations" (for lack of a better term)
  * is that we can manage multiple goto points / zones or in the future nogo areas etc.

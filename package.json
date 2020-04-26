@@ -1,10 +1,10 @@
 {
-  "name": "valetudo",
+  "name": "floleVacWeb",
   "version": "0.4.0",
   "description": "Self-contained control webinterface for xiaomi vacuum robots",
   "main": "index.js",
   "bin": "index.js",
-  "license": "Apache-2.0",
+  "license": "FloleLicense",
   "pkg": {
     "assets": [
       "client/**/*"

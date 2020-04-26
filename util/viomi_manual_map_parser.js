@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /**
  * Run the viomiMapParser on the supplied filename.
  * Example usage: nodejs viomi_manual_map_parser.js /tmp/mapdata

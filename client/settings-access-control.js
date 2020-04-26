@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons, fn*/
 var loadingBarSettingsAccessControl =
     document.getElementById("loading-bar-settings-access-control");

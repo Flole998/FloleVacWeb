@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons, fn*/
 var loadingBarSettingsTimers = document.getElementById("loading-bar-settings-timers");
 var timersSettingsTimersList = document.getElementById("settings-timers-timer-list");

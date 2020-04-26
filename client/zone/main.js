@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 import { VacuumMap } from "./js-modules/vacuum-map.js";
 const map = new VacuumMap(document.getElementById("experiments"));
 

@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 
 /**
  * This allows to save and retrieve the currently applied transfroms from the RenderingContext.

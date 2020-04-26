@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons, fn*/
 var loadingBarSettingsInfo = document.getElementById("loading-bar-settings-info");
 ons.getScriptPage().onShow = function() {
@@ -10,7 +11,7 @@ function updateSettingsInfoPage() {
         if (!err) {
             document.getElementById("info_fw_version").innerHTML = res.version;
             document.getElementById("info_fw_build").innerHTML = res.build;
-            document.getElementById("info_valetudo_version").innerHTML = res.valetudoVersion;
+            document.getElementById("info_floleVacWeb_version").innerHTML = res.floleVacWebVersion;
         } else {
             ons.notification.toast(err,
                 {buttonLabel: "Dismiss", timeout: window.fn.toastErrorTimeout});
@@ -38,21 +39,21 @@ function updateAppLocale() {
 }
 
 // eslint-disable-next-line no-unused-vars
-function checkNewValetudoVersion() {
+function checkNewFloleVacWebVersion() {
     loadingBarSettingsInfo.setAttribute("indeterminate", "indeterminate");
-    fn.request("https://api.github.com/repos/Hypfer/Valetudo/releases", "GET", function(err, res) {
+    fn.request("https://api.github.com/repos/Hypfer/FloleVacWeb/releases", "GET", function(err, res) {
         loadingBarSettingsInfo.removeAttribute("indeterminate");
         if (!err) {
             try {
-                var info_valetudo_newest_release = res[0];
-                document.getElementById("info_newest_valetudo_version").innerHTML =
-                    info_valetudo_newest_release.tag_name;
-                document.getElementById("info_valetudo_update_url").innerHTML =
-                    "<a href=\"" + info_valetudo_newest_release.html_url + "\">" +
-                    info_valetudo_newest_release.html_url + "</a>";
-                if (document.getElementById("info_valetudo_version").innerHTML !=
-                    info_valetudo_newest_release.tag_name) {
-                    document.getElementById("info_valetudo_update_url_list").style.display =
+                var info_floleVacWeb_newest_release = res[0];
+                document.getElementById("info_newest_floleVacWeb_version").innerHTML =
+                    info_floleVacWeb_newest_release.tag_name;
+                document.getElementById("info_floleVacWeb_update_url").innerHTML =
+                    "<a href=\"" + info_floleVacWeb_newest_release.html_url + "\">" +
+                    info_floleVacWeb_newest_release.html_url + "</a>";
+                if (document.getElementById("info_floleVacWeb_version").innerHTML !=
+                    info_floleVacWeb_newest_release.tag_name) {
+                    document.getElementById("info_floleVacWeb_update_url_list").style.display =
                         ""; // make entry visible if newer version is availiable
                 }
             } catch (e) {

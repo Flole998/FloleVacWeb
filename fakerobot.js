@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 import {createSocket} from "dgram";
 import process from "process";
 
@@ -5,9 +6,9 @@ import DummyCloud from "./lib/miio/Dummycloud";
 import MiioSocket from "./lib/miio/MiioSocket";
 import Model from "./lib/miio/Model";
 import RetryWrapper from "./lib/miio/RetryWrapper";
-import Valetudo from "./lib/Valetudo";
+import FloleVacWeb from "./lib/FloleVacWeb";
 
-const model = new Model(Valetudo.VACUUM_MODEL_PROVIDER());
+const model = new Model(FloleVacWeb.VACUUM_MODEL_PROVIDER());
 
 function createLocalSocket() {
     let socket = createSocket("udp4");
@@ -19,24 +20,24 @@ class FakeRoborock {
     constructor() {
         this.localSocket = new MiioSocket({
             socket: createLocalSocket(),
-            token: Valetudo.NATIVE_TOKEN_PROVIDER(),
+            token: FloleVacWeb.NATIVE_TOKEN_PROVIDER(),
             onMessage: (msg) => this.onMessage(this.localSocket, msg),
             onConnected: () => this.connectCloud(),
             name: "local"
         });
     }
-    /** Connect to the valetudo dummycloud interface. */
+    /** Connect to the floleVacWeb dummycloud interface. */
     connectCloud() {
         console.log("rinfo", this.localSocket.rinfo);
         this.cloudSocket = new MiioSocket({
             socket: createSocket("udp4"),
             rinfo: {address: this.localSocket.rinfo.address, port: DummyCloud.PORT},
             name: "cloud",
-            token: Valetudo.CLOUD_KEY_PROVIDER(),
+            token: FloleVacWeb.CLOUD_KEY_PROVIDER(),
             onMessage: (msg) => this.onMessage(this.cloudSocket, msg),
         });
         // send a message that dummycloud will ignore to force the handshake
-        new RetryWrapper(this.cloudSocket, Valetudo.CLOUD_KEY_PROVIDER).sendMessage("_otc.info");
+        new RetryWrapper(this.cloudSocket, FloleVacWeb.CLOUD_KEY_PROVIDER).sendMessage("_otc.info");
     }
     onMessage(socket, msg) {
         console.log("incoming", msg);

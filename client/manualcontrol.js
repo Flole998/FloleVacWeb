@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons, fn*/
 var manualControlSequenceId = 1;
 var manualControlDurationMS = 100;

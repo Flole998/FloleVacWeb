@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons, fn*/
 var loadingBarSettingsCleaningHistory =
     document.getElementById("loading-bar-settings-cleaning-history");

@@ -1,5 +1,6 @@
+// Modifications copyright (C) Flole
 /**
- * General functions for Valetudo map operations.
+ * General functions for FloleVacWeb map operations.
  *
  * The functions here are used both on the server and the client.
  * The source file resides in the client/js folder to facilitate deployment.

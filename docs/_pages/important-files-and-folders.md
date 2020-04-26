@@ -1,3 +1,4 @@
+Modifications copyright (C) Flole
 ---
 title: Files to backup
 category: Misc
@@ -15,7 +16,7 @@ These is a list of important files on the robot. I am mainly wirting this down h
 
 Zones + Spots configuration, mqtt + other config
 
-`/mnt/data/valetudo/config.json`
+`/mnt/data/floleVacWeb/config.json`
 
 Status to keep map
 
@@ -38,4 +39,4 @@ various map data
 
 To backup copy the files from the robot to a safe place. (lab.cfg can be easily set, see FAQ)
 
-To restore just copy the files over to the robot and reboot valetudo.
+To restore just copy the files over to the robot and reboot floleVacWeb.

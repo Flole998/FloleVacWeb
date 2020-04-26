@@ -1,8 +1,9 @@
-const Valetudo = require("./lib/Valetudo");
+// Modifications copyright (C) Flole
+const FloleVacWeb = require("./lib/FloleVacWeb");
 const process = require("process");
 const Logger = require("./lib/Logger");
 
-var valetudo = new Valetudo();
+var floleVacWeb = new FloleVacWeb();
 
 process.on("unhandledRejection", error => {
     console.log("unhandledRejection", error);
@@ -10,7 +11,7 @@ process.on("unhandledRejection", error => {
 
 async function shutdown() {
     try {
-        await valetudo.shutdown();
+        await floleVacWeb.shutdown();
         // need to exit here because otherwise the process would stay open
         process.exit(0);
     } catch (err) {
@@ -21,7 +22,7 @@ async function shutdown() {
 }
 
 // Signal termination handler - used if the process is killed
-// (e.g. kill command, service valetudo stop, reboot (via upstart),...)
+// (e.g. kill command, service floleVacWeb stop, reboot (via upstart),...)
 process.on("SIGTERM", shutdown);
 
 // Signal interrupt handler -

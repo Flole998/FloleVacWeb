@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 // MIT License
 
 // Copyright (c) 2018 Jarek Foksa

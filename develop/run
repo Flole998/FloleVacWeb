@@ -2,7 +2,7 @@
 
 ####################################################################################
 #
-# This file provides a simple way to run a development version of valetudo on your
+# This file provides a simple way to run a development version of floleVacWeb on your
 # local computer. It should be invoked from the main directory as ./develop/run.sh
 #
 # Environment settings and configuration are read from the directory develop/local/.
@@ -16,7 +16,7 @@
 
 # check if we're in the right (main) directory
 if [ "$0" != "./develop/run" ]; then
-    echo "Please run this script from the main Valetudo directory, i.e. as ./develop/run"
+    echo "Please run this script from the main FloleVacWeb directory, i.e. as ./develop/run"
     exit 1
 fi
 
@@ -46,7 +46,7 @@ if [ ! -d "./develop/local" ]; then
     cp ./develop/device.conf.example ./develop/local/device.conf
     cp ./develop/device.token.example ./develop/local/device.token
 
-    echo "# This file contains environment settings for your local valetudo development." > ./develop/local/env
+    echo "# This file contains environment settings for your local floleVacWeb development." > ./develop/local/env
     echo "# Edit it according to your individual setup." >> ./develop/local/env
     echo "" >> ./develop/local/env
 
@@ -88,16 +88,16 @@ if [ ! -f "./develop/local/env" ]; then
 fi
 
 # default command to run
-VALETUDO_NODE_JS=nodejs
+FLOLEVACWEB_NODE_JS=nodejs
 
 # load environment
 . ./develop/local/env
 
-echo "Starting Valetudo locally with the following settings:"
+echo "Starting FloleVacWeb locally with the following settings:"
 echo ""
 grep -v '#' ./develop/local/env | grep '=' | cat
 cat ./develop/local/device.conf
 echo ""
 
-$VALETUDO_NODE_JS ./index.js
+$FLOLEVACWEB_NODE_JS ./index.js
 

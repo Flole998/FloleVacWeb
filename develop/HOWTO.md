@@ -1,7 +1,8 @@
-# Building and Modifying Valetudo
+Modifications copyright (C) Flole
+# Building and Modifying FloleVacWeb
 
 This file provides instructions for quickly setting up an environment where you can build
-and modify Valetudo according to your needs.
+and modify FloleVacWeb according to your needs.
 
 It shows a complete setup from scratch, on a freshly installed Ubuntu 18.04 system.
 
@@ -18,13 +19,13 @@ Install git and npm:
 
 ```
 cd ~
-git clone https://github.com/Hypfer/Valetudo.git
+git clone https://github.com/Hypfer/FloleVacWeb.git
 ```
 
 ### 3. Install dependencies
 
 ```
-cd Valetudo
+cd FloleVacWeb
 npm install
 ```
 
@@ -66,7 +67,7 @@ Once you finished editing the files, you should be all set.
 ./develop/run
 ```
 
-If your configuration is correct, Valetudo should now be working on your development host.
+If your configuration is correct, FloleVacWeb should now be working on your development host.
 
 ### 6. Code!
 
@@ -96,13 +97,13 @@ docker run <image_id>
 
 Copy the output file from the container with
 ```
-docker cp <container_id>:valetudo valetudo
+docker cp <container_id>:floleVacWeb floleVacWeb
 ```
 
-The output file `valetudo` is a binary file that you can copy to the device:
+The output file `floleVacWeb` is a binary file that you can copy to the device:
 
 ```
-scp ./valetudo root@192.168.1.42:/usr/local/bin/
+scp ./floleVacWeb root@192.168.1.42:/usr/local/bin/
 ```
 
 Once you're that far, you hopefully don't need any further advice.

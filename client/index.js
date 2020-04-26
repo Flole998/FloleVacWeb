@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons */
 window.fn = {};
 
@@ -150,12 +151,12 @@ window.fn.applyTheme =
             if (themeEl)
                 themeEl.setAttribute("href", "css/dark-onsen-css-components.min.css");
             if (mapThemeEl)
-                mapThemeEl.setAttribute("href", "css/dark-valetudo-map.css");
+                mapThemeEl.setAttribute("href", "css/dark-floleVacWeb-map.css");
         } else {
             if (themeEl)
                 themeEl.setAttribute("href", "css/onsen-css-components.min.css");
             if (mapThemeEl)
-                mapThemeEl.setAttribute("href", "css/valetudo-map.css");
+                mapThemeEl.setAttribute("href", "css/floleVacWeb-map.css");
         }
         window.fn.updateMapPage && window.fn.updateMapPage();
     };

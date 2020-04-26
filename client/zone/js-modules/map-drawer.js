@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /**
  * Object for drawing the map itself onto a 1024 * 1024 canvas.
  * It's not displayed directly but used to easily paint the map image onto another canvas.

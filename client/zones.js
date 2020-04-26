@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons, fn*/
 let loadingBarZones = document.getElementById("loading-bar-zones");
 let zonesList = document.getElementById("zones-list");

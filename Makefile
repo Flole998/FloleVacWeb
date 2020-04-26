@@ -8,4 +8,4 @@ all:
 	npm run build
 
 clean:
-	rm -f valetudo
+	rm -f floleVacWeb

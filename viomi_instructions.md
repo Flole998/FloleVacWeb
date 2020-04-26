@@ -1,3 +1,4 @@
+Modifications copyright (C) Flole
 # Development Instructions for Viomi
 
 Current state of viomi support:
@@ -34,7 +35,7 @@ Then, set up the robot to talk to your host instead of the xiaomi cloud:
 ```shell
 ssh root@viomi
 echo "110.43.0.83 ot.io.mi.com ott.io.mi.com" >> /etc/hosts
-cat >/etc/rc.d/S51valetudo <<EOF
+cat >/etc/rc.d/S51floleVacWeb <<EOF
 #!/bin/sh
 iptables         -F OUTPUT
 iptables  -t nat -F OUTPUT
@@ -45,14 +46,14 @@ for host in 110.43.0.83 110.43.0.85; do
   iptables         -A OUTPUT                     -d $host/32  -j REJECT
 done
 EOF
-chmod +x /etc/rc.d/S51valetudo
+chmod +x /etc/rc.d/S51floleVacWeb
 reboot
 ```
 
 Note: To temporarily revert this while needing to use the Mi Home App,
 you can do a `iptables -F; iptables -F -t nat` and comment out the line in `/etc/hosts`.
 
-## Valetudo setup
+## FloleVacWeb setup
 
 You can get the values for the following by doing `cat /etc/miio/device.conf` and 
 `hexdump -C /etc/miio/device.token | cut -b 10-60 | head -n1 | sed 's/ //g'` on the robot.
@@ -84,9 +85,9 @@ Now you can run
 
     npm run build_viomi
 
-And deploy the `valetudo` binary to your robot:
+And deploy the `floleVacWeb` binary to your robot:
 
-    scp valetudo root@vacuum:/mnt/UDISK/
+    scp floleVacWeb root@vacuum:/mnt/UDISK/
 
     # Setup init scripts (only needed once)
     (cd deployment/viomi; tar cv . | ssh root@vacuum "cd /; tar x")
@@ -99,19 +100,19 @@ for details). Make sure you use ssh-keys and don't rely on password login.
 
 For this you currently need to:
 
-*   uninstall Valetudo (because the diskspace is needed for the upgrade) and
+*   uninstall FloleVacWeb (because the diskspace is needed for the upgrade) and
 *   use the app to perform the upgrade (because upgrades are unsupported by
-    Valetudo / only supported via cloud interface and there's no public source
+    FloleVacWeb / only supported via cloud interface and there's no public source
     for the binaries in the first place).
 
-## Uninstall Valetudo
+## Uninstall FloleVacWeb
 
-This will remove Valetudo, free the diskspace and re-enable the cloud interface.
+This will remove FloleVacWeb, free the diskspace and re-enable the cloud interface.
 
 ```shell
 ssh root@vacuum
-/etc/init.d/valetudo stop
-rm /etc/rc.d/S51valetudo /etc/init.d/valetudo /mnt/UDISK/valetudo
+/etc/init.d/floleVacWeb stop
+rm /etc/rc.d/S51floleVacWeb /etc/init.d/floleVacWeb /mnt/UDISK/floleVacWeb
 ```
 
 ## Enable logging

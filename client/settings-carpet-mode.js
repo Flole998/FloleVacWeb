@@ -1,3 +1,4 @@
+// Modifications copyright (C) Flole
 /*global ons, fn*/
 
 var loadingBarSettingsCarpetMode = document.getElementById("loading-bar-settings-carpet-mode");

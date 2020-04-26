@@ -1,3 +1,4 @@
+Modifications copyright (C) Flole
 ---
 title: FAQ
 category: Misc
@@ -7,9 +8,9 @@ order: 30
 
 ## Why the name?
 
-Valetudo is the roman name for the greek goddess Hygieia which is the goddess of health, cleanliness and hygiene. Also I'm bad at naming things.
+FloleVacWeb is the roman name for the greek goddess Hygieia which is the goddess of health, cleanliness and hygiene. Also I'm bad at naming things.
 
-## Is it possible to remove Valetudo from my robot completely? 
+## Is it possible to remove FloleVacWeb from my robot completely? 
 
 Yes. Simply reset your robot to factory defaults.
 
@@ -53,9 +54,9 @@ The python-miio project offers a commandline tool to communitcate with the robot
 
 ## Where do I find the log file?
 
-    tail -f /var/log/upstart/valetudo.log
+    tail -f /var/log/upstart/floleVacWeb.log
 
-## How to cleanup maps before Valetudo version 0.3.0?
+## How to cleanup maps before FloleVacWeb version 0.3.0?
 
 First stop the watch daemon and then delete the files and start it again.
 
@@ -69,17 +70,17 @@ First stop the watch daemon and then delete the files and start it again.
 
 ## How can I add password authentication?
 
-Password authentication isn't directly supported by valetudo, but you can setup a reverse proxy. For nginx you can use the following configuration. You can also use your reverse proxy to add ssl encryption.
+Password authentication isn't directly supported by floleVacWeb, but you can setup a reverse proxy. For nginx you can use the following configuration. You can also use your reverse proxy to add ssl encryption.
 
 ```
 server {
-    server_name valetudo.org; # put your server name here
+    server_name floleVacWeb.org; # put your server name here
     listen 192.168.178.10:80; # put the IP address of the server here 
 
     #access_log            /var/log/nginx/foo.access.log;
     location / {
       proxy_set_header        Authorization "";
-      auth_basic              "Valetudo"; # This string will be shown at the authentication window
+      auth_basic              "FloleVacWeb"; # This string will be shown at the authentication window
       auth_basic_user_file    /etc/nginx/basic_auth; # file with user credentials
       proxy_http_version      1.1;
       proxy_set_header        X-Real-IP $remote_addr;
@@ -100,7 +101,7 @@ In default the robot will lose map data after each reboot. To prevent the map re
 This can be also done via filesystem access `echo -n "1" > /mnt/data/rockrobo/lab.cfg` on the robot itself.
 
 ## No map displayed
-Since v0.3.0 Valetudo now use the cloud interface and that requires the robot to be provisioned (wifi configured). Therefore, the map will not be displayed in AP mode! Ensure you added your device to your own wifi network.
+Since v0.3.0 FloleVacWeb now use the cloud interface and that requires the robot to be provisioned (wifi configured). Therefore, the map will not be displayed in AP mode! Ensure you added your device to your own wifi network.
 In AP mode, a map will nevertheless be created, that map can later be displayed once connected to the wifi network. 
 
 ## My map does not persist / zone co-ordinates change

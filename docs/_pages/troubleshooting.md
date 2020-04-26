@@ -1,3 +1,4 @@
+Modifications copyright (C) Flole
 ---
 title: Troubleshooting
 category: Misc
@@ -10,7 +11,7 @@ order: 32
 The msgid is out of sync.
 
 Restart the robot or run this command using ssh:
-`killall miio_client && service valetudo restart `
+`killall miio_client && service floleVacWeb restart `
 
 ## Map
 ### Map only shows „No Map Data“
